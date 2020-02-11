@@ -4989,7 +4989,7 @@
               IF ( NPO .EQ. 0 ) EXIT
 !
               NFBPO  = NFBPO + 1
-              IF ( NFBPO .GT. 9 ) THEN
+              IF ( NFBPO .GT. 18 ) THEN
                   WRITE (NDSE,1006)
                   CALL EXTCDE ( 50 )
                 END IF
@@ -5877,7 +5877,7 @@
 !
   990 FORMAT (/'  Output boundary points : '/                         &
                ' --------------------------------------------------')
-  991 FORMAT ( '       File nest',I1,'.ww3  Number of points  :',I6/  &
+  991 FORMAT ( '       File nest',I2,'.ww3  Number of points  :',I6/  &
                '                       Number of spectra :',I6)
   992 FORMAT (/'         Nr.|  Long.  |   Lat.  '/               &
                '       -----|---------|---------')

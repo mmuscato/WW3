@@ -310,11 +310,11 @@
 !
 ! Chage this as parameters become available in grib2 tables
 !
-      ALLOCATE ( IFIA (16), IFJA(16) ) 
+      ALLOCATE ( IFIA (15), IFJA(15) ) 
 
-      IFIA = (/ 1, 1, 2, 2, 2, 2, 4, 4, 4, 4, 4, 5, 9, 9, 9, 9 /)
-      IFJA = (/ 1, 4, 2 ,3, 5, 8, 3, 5, 6, 7, 8, 1, 1, 2, 3, 4 /)
-      DO I = 1, 16 
+      IFIA = (/ 1, 1, 2, 2, 2, 4, 4, 4, 4, 4, 5, 9, 9, 9, 9 /)
+      IFJA = (/ 1, 4, 2, 5, 8, 3, 5, 6, 7, 8, 1, 1, 2, 3, 4 /)
+      DO I = 1, 15
         IF ( FLREQ(IFIA(I),IFJA(I)) ) THEN
           FLREQ(IFIA(I),IFJA(I)) = .FALSE. 
           WRITE(NDSO,946) IDOUT(IFIA(I),IFJA(I)),                      &
@@ -1281,6 +1281,21 @@
                 DO I=1, NOSWLL
                   CALL W3S2XY                                         &
                         ( NSEA, NSEA, NX, NY, PSI(:,I), MAPSF, YY(:,I) )
+                  END DO
+!
+!     Mean wave period (based on second moment) of partition
+!
+              ELSE IF ( IFI .EQ. 4 .AND. IFJ .EQ. 14 ) THEN
+                FLPRT = .TRUE.
+!/NCEP1                KPDS5A  =  -1
+!/NCEP1                KPDS5B  =  -1
+!/NCEP2                KPDS5A  =  65
+!/NCEP2                KPDS5B  =  65
+                CALL W3S2XY                                           &
+                        ( NSEA, NSEA, NX, NY, PT2(:,0), MAPSF, YY(:,0) )
+                DO I=1, NOSWLL
+                  CALL W3S2XY                                         &
+                        ( NSEA, NSEA, NX, NY, PT2(:,I), MAPSF, YY(:,I) )
                   END DO
 !
 !     Partitioned wind sea fraction

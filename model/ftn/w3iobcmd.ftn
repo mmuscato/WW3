@@ -236,7 +236,7 @@
 !/RTD      REAL                   :: XRLIM, YRLIM
       REAL, ALLOCATABLE       :: TMPSPC(:,:)
       LOGICAL                 :: FLOK
-      CHARACTER(LEN=18)       :: FILEN
+      CHARACTER(LEN=19)       :: FILEN
       CHARACTER(LEN=10)       :: VERTST
       CHARACTER(LEN=32)       :: IDTST
 !/
@@ -281,11 +281,14 @@
 !
       IF ( INXOUT.EQ.'WRITE' .AND. FILEW ) THEN
           DO IFILE=1, NFBPO
-            NDSL(IFILE) = NDSB + IFILE - 1
-            WRITE (FILEN,'(A4,I1,A1,A)') 'nest', IFILE, '.',          &
-                                         FILEXT(:I)
+	    NDSL(IFILE) = NDSB + IFILE - 1
+	    IF ( IFILE .LT. 10 ) THEN
+                WRITE (FILEN,'(A5,I1,A1,A3)') 'nest0', IFILE, '.','ww3'
+	    ELSE
+		WRITE (FILEN,'(A4,I2,A1,A3)') 'nest', IFILE,'.','ww3'
+	    END IF
 !/T            WRITE (NDST,9001) FILEN(:6+I), NDSL(IFILE)
-            OPEN (NDSL(IFILE),FILE=FNMPRE(:J)//FILEN(:6+I),           &
+            OPEN (NDSL(IFILE),FILE=FNMPRE(:J)//FILEN(:7+I),           &
                   FORM='UNFORMATTED',ERR=800,IOSTAT=IERR)
             END DO
         END IF

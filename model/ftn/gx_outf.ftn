@@ -331,7 +331,7 @@
             IF ( FLREQ(IFI,IFJ) ) NVAR = NVAR + 3
           ELSE IF ( IFI.EQ.4 .AND. IFJ.LE.NOGE(4) ) THEN
             IF ( FLREQ(IFI,IFJ) ) NVAR = NVAR + NOSWLL + 1 ! Partitioned parameters
-          ELSE IF ( IFI.EQ.1 .AND. IFJ .EQ. 2 ) THEN
+          ELSE IF ( IFI.EQ.1 .AND. IFJ.EQ.2 ) THEN
             IF ( FLREQ(IFI,IFJ) ) NVAR = NVAR + 2 ! Current vector
           ELSE IF ( IFI.EQ.1 .AND. IFJ.EQ.3 ) THEN
             IF ( FLREQ(IFI,IFJ) ) NVAR = NVAR + 2 ! Wind vector
@@ -675,7 +675,7 @@
   990 FORMAT ('DSET      ww3.grads'/                                  &
               'TITLE     WAVEWATCH III gridded data'/                 &
               'OPTIONS   sequential'/                                 &
-              'OPTIONS   big_endian'/                                 &
+!              'OPTIONS   big_endian'/                                 &
               'UNDEF    ',F8.1/                                       &
               'XDEF     ',I4,'  LINEAR ',2F12.5/                      &
               'YDEF     ',I4,'  LINEAR ',2F12.5/                      &

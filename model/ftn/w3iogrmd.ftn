@@ -482,7 +482,7 @@
                   WRITE (NDSE,902) VERTST, VERGRD
               CALL EXTCDE ( 11 )
             END IF
-          IF ( NFBPO .GT. 9 ) THEN
+          IF ( NFBPO .GT. 99 ) THEN
               IF ( IAPROC .EQ. NAPERR )                               &
                   WRITE (NDSE,904) NFBPO, 9
               CALL EXTCDE ( 13 )
