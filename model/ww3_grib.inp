@@ -1,0 +1,32 @@
+$ -------------------------------------------------------------------- $
+$ WAVEWATCH III Grid output post-processing ( GRIB )                   $
+$--------------------------------------------------------------------- $
+$ Time, time increment and number of outputs.
+$
+$  20190807 120000  3600 97
+  REFDATETIME  3600 97
+$
+$ Output request flags identifying fields as in ww3_shel.inp. See that
+$ file for a full documentation of field output options. Namelist type
+$ selection is used here (for alternative F/T flags, see ww3_shel.inp).
+$
+  N
+  DIR HS T02 PHS PDIR PT02
+$
+$ Additional info needed for grib file
+$   Forecast time, center ID, generating process ID, grid definition,
+$   GDS/BMS flag and grid definition template number GDTN (0 = regular;
+$   30 = Lambert Conformal, only these two types available now) 
+$
+$  20190807 120000 7 88 255 0 0
+  REFDATETIME 7 88 255 0 0
+$
+$ if GDTN is 30 (lambert conformal) read next line with proj parms 
+$ LATAN1, LONV, DSX, DSY, SCNMOD, LATIN1, LATIN2, LATSP, LONSP   
+$ Example for the GLW grid at NCEP 
+$ 25 265 2.539703 2.539703 64 25 25 -90 0 
+$ Other curvilinear grids not yet implemented 
+$
+$ -------------------------------------------------------------------- $
+$ End of input file                                                    $
+$ -------------------------------------------------------------------- $
